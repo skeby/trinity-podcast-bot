@@ -14,7 +14,6 @@ export default (_, res) => {
   bot.launch({
     webhook: {
       domain: webhookUrl,
-      port: process.env.PORT || 3000,
     },
   });
   // bot.on("left_chat_member", event_left_chat_member);
