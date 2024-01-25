@@ -1,6 +1,8 @@
 # Setting Up
 
-Visit BotFather on Telegram, create a new bot and get your Bot Token
+Visit BotFather on Telegram, create a new bot and get your Bot Token.
+
+Create a MongoDB account, create a cluster and get MongoDB connection string. This string will be used as the database base URI.
 
 # Environment Variables
 
@@ -8,12 +10,13 @@ Create a `.env` file in the root directory:
 
 ```bash
 BOT_TOKEN=<YOUR_BOT_TOKEN>
+DB_BASE_URI=<YOUR_MONGODB_URI>
 ```
 
 # Installation
 
-Run `npm i` to install all the required dependencies
+Run `npm i` to install all the required dependencies.
 
 # Running the Bot
 
-Run `npm run dev` to run the app in development mode
+Run `npm run dev` to run the app in development mode.
