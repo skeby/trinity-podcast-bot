@@ -8,8 +8,15 @@ import event_left_chat_member from "./events/event_left_chat_member.js";
 connectToDB("trinity-podcast-bot");
 
 export default (_, res) => {
+  const webhookUrl = "https://trinity-podcast-bot.vercel.app/api/webhook";
   bot.start(cmd_start);
   bot.on("new_chat_members", event_new_chat_members);
+  bot.launch({
+    webhook: {
+      domain: webhookUrl,
+      port: process.env.PORT || 3000,
+    },
+  });
   // bot.on("left_chat_member", event_left_chat_member);
   // bot.command("soldier-details", cmd_soldier_details);
 
