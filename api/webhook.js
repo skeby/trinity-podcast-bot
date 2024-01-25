@@ -1,4 +1,4 @@
-import bot from "./bot.js";
+import { bot } from "./bot.js";
 // import cmd_soldier_details from "./src/commands/cmd_soldier_details.js";
 import { connectToDB } from "./database/db.js";
 import cmd_start from "./commands/cmd_start.js";
