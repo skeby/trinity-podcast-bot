@@ -4,4 +4,4 @@ const cmd_start = (ctx) => {
   );
 };
 
-export { cmd_start };
+export default cmd_start;
