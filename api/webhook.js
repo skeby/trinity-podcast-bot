@@ -12,12 +12,11 @@ bot.on("new_chat_members", event_new_chat_members);
 // bot.on("left_chat_member", event_left_chat_member);
 // bot.command("soldier-details", cmd_soldier_details);
 
-  // bot
-  //   .launch()
-  //   .then(() => {
-  //     console.log("Bot started");
-  //   })
-  //   .catch((err) => {
-  //     console.error("An error occured while starting the bot: ", err);
-  //   });
-};
+// bot
+//   .launch()
+//   .then(() => {
+//     console.log("Bot started");
+//   })
+//   .catch((err) => {
+//     console.error("An error occured while starting the bot: ", err);
+//   });
