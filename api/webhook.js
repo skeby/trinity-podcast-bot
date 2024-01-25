@@ -1,7 +1,7 @@
 import { bot } from "./bot.js";
 // import cmd_soldier_details from "./src/commands/cmd_soldier_details.js";
 import { connectToDB } from "./database/db.js";
-import cmd_start from "./commands/cmd_start.js";
+import { cmd_start } from "./commands/cmd_start.js";
 import event_new_chat_members from "./events/event_new_chat_members.js";
 import event_left_chat_member from "./events/event_left_chat_member.js";
 
