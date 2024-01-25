@@ -7,7 +7,7 @@ import event_left_chat_member from "./events/event_left_chat_member.js";
 
 connectToDB("trinity-podcast-bot");
 
-export default () => {
+export default (_, res) => {
   bot.start(cmd_start);
   bot.on("new_chat_members", event_new_chat_members);
   // bot.on("left_chat_member", event_left_chat_member);
@@ -21,4 +21,5 @@ export default () => {
   //   .catch((err) => {
   //     console.error("An error occured while starting the bot: ", err);
   //   });
+  res.send("Bot is running");
 };
