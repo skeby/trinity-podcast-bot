@@ -16,8 +16,8 @@ if (process.env.NODE_ENV === "production") {
   bot
     .launch({
       webhook: {
-        domain: process.env.WEBHOOK_DOMAIN,
-        port: process.env.WEBHOOK_PORT,
+        domain: process.env.DOMAIN,
+        port: process.env.PORT,
       },
     })
     .then(() => {
