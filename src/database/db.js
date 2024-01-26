@@ -6,7 +6,10 @@ import User from "../database/models/User.js";
 dotenv.config();
 
 const { connect, connection } = mongoose;
-const DB_BASE_URI = process.env.DB_BASE_URI || "mongodb://127.0.0.1:27017";
+const DB_BASE_URI =
+  process.env.NODE_ENV === "production"
+    ? process.env.DB_BASE_URI
+    : "mongodb://127.0.0.1:27017";
 
 const connectToDB = (databaseName) => {
   // Connect to the specified database
