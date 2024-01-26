@@ -1,3 +1,4 @@
+import express from "express";
 import bot from "./src/bot.js";
 import cmd_start from "./src/commands/cmd_start.js";
 import { connectToDB } from "./src/database/db.js";
@@ -6,6 +7,16 @@ import event_new_chat_members from "./src/events/event_new_chat_members.js";
 // import cmd_soldier_details from "./src/commands/cmd_soldier_details.js";
 
 connectToDB("trinity-podcast-bot");
+
+const server = express();
+server.get("/", (req, res) => {
+  res.send("Home endpoint of Trinity Telegram Bot!");
+});
+
+// Create a ping endpoint
+server.get("/ping", (req, res) => {
+  res.send("pong");
+});
 
 bot.start(cmd_start);
 bot.on("new_chat_members", event_new_chat_members);
@@ -36,3 +47,8 @@ if (process.env.NODE_ENV === "production") {
       console.error("An error occured while starting the bot: ", err);
     });
 }
+
+// Start the Express server
+server.listen(process.env.WEBHOOK_PORT, () => {
+  console.log(`Server is running on port ${process.env.WEBHOOK_PORT}`);
+});
