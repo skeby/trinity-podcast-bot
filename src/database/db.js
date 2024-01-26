@@ -17,7 +17,7 @@ const connectToDB = (databaseName) => {
 };
 
 const getUser = (userId) => {
-  return User.find({ id: userId });
+  return User.findOne({ userId: userId });
 };
 
 const postUser = async (user) => {

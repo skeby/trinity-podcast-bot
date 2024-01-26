@@ -1,4 +1,4 @@
-import { getUserCount, postUser } from "../database/db.js";
+import { getUser, getUserCount, postUser } from "../database/db.js";
 
 export default (ctx) => {
   try {
@@ -19,12 +19,20 @@ export default (ctx) => {
         company: Math.ceil(userCount / 1000),
         battalion: Math.ceil(userCount / 100000),
       };
-
-      postUser(userObj);
-      const { squad, platoon, company, battalion } = userObj;
-      ctx.reply(
-        `Welcome to the Trinity Army Camp🎪\n\nYou are now part of Battalion ${battalion}, Company ${company}, Platoon ${platoon}, Squad ${squad}.\n\nTo know more about Trinity feel free to explore the command.`
-      );
+      getUser(user.id).then((existingUser) => {
+        if (!existingUser) {
+          postUser(userObj);
+          const { squad, platoon, company, battalion } = userObj;
+          ctx.reply(
+            `Welcome to the Trinity Army Camp🎪\n\nYou are now part of Battalion ${battalion}, Company ${company}, Platoon ${platoon}, Squad ${squad}.\n\nTo know more about Trinity feel free to explore the command.`
+          );
+        } else {
+          const { squad, platoon, company, battalion } = existingUser;
+          ctx.reply(
+            `Welcome to the Trinity Army Camp🎪\n\nYou are now part of Battalion ${battalion}, Company ${company}, Platoon ${platoon}, Squad ${squad}.\n\nTo know more about Trinity feel free to explore the command.`
+          );
+        }
+      });
       console.log("User: ", user);
     });
   } catch (err) {
