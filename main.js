@@ -49,6 +49,6 @@ if (process.env.NODE_ENV === "production") {
 }
 
 // Start the Express server
-server.listen(process.env.WEBHOOK_PORT, () => {
-  console.log(`Server is running on port ${process.env.WEBHOOK_PORT}`);
+server.listen(process.env.EXPRESS_PORT, () => {
+  console.log(`Server is running on port ${process.env.EXPRESS_PORT}`);
 });
