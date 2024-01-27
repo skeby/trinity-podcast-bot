@@ -25,7 +25,7 @@ bot.on("new_chat_members", event_new_chat_members);
 
 if (process.env.NODE_ENV === "production") {
   bot.telegram
-    .setWebhook(process.env.WEBHOOK_PORT)
+    .setWebhook(process.env.WEBHOOK_DOMAIN)
     .then(() => {
       console.log("Webhook bot listening on port " + process.env.WEBHOOK_PORT);
     })
