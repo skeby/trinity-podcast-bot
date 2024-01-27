@@ -2,23 +2,16 @@ import { getUser } from "../database/db.js";
 
 export default (ctx) => {
   let user;
-  console.log(`ctx.from: `, ctx.from);
-  const id = ctx.chat.type === "private" ? ctx.chat.id : ctx.from.id;
-  const username =
-    ctx.chat.type === "private" ? ctx.chat.username : ctx.from.username;
-  const firstName =
-    ctx.chat.type === "private" ? ctx.chat.first_name : ctx.from.first_name;
-
-  getUser(id).then((existingUser) => {
+  getUser(ctx.chat.id).then((existingUser) => {
     if (existingUser) {
       user = existingUser;
       // Reply with details
       ctx.reply(
-        `${username ? `@${username}` : firstName}, You are in squad ${
-          user.squad
-        }, platoon ${user.platoon}, company ${user.company}, battalion ${
-          user.battalion
-        }`
+        `${
+          ctx.username ? `@${ctx.chat.username}` : ctx.chat.first_name
+        }, You are in squad ${user.squad}, platoon ${user.platoon}, company ${
+          user.company
+        }, battalion ${user.battalion}`
       );
     } else {
       ctx.reply(
