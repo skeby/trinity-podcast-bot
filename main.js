@@ -24,13 +24,8 @@ bot.on("new_chat_members", event_new_chat_members);
 // bot.on("left_chat_member", event_left_chat_member);
 
 if (process.env.NODE_ENV === "production") {
-  bot
-    .launch({
-      webhook: {
-        domain: process.env.WEBHOOK_DOMAIN,
-        port: process.env.WEBHOOK_PORT,
-      },
-    })
+  bot.telegram
+    .setWebhook(process.env.WEBHOOK_PORT)
     .then(() => {
       console.log("Webhook bot listening on port " + process.env.WEBHOOK_PORT);
     })
