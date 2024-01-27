@@ -2,7 +2,6 @@ import { getUser } from "../database/db.js";
 
 export default (ctx) => {
   let user;
-  console.log(`ctx.from: `, ctx.from);
   const id = ctx.chat.type === "private" ? ctx.chat.id : ctx.from.id;
   const username =
     ctx.chat.type === "private" ? ctx.chat.username : ctx.from.username;
