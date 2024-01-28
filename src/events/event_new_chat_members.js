@@ -1,5 +1,22 @@
 import { getUser, getUserCount, postUser } from "../database/db.js";
 
+const newUserReply = (
+  ctx,
+  { communityNumber, squad, platoon, company, battalion }
+) => {
+  const username =
+    ctx.chat.type === "private" ? ctx.chat.username : ctx.from.username;
+  const firstName =
+    ctx.chat.type === "private" ? ctx.chat.first_name : ctx.from.first_name;
+  ctx.reply(
+    `Welcome to the Trinity Army Camp 🎪, ${
+      username ? `@${username}` : firstName
+    }\n\nYou are No. ${
+      communityNumber % 10
+    } in Squad ${squad}, Platoon ${platoon}, Company ${company}, Battalion ${battalion}. Your soldier ID is S${squad}P${platoon}C${company}B${battalion}.\n\nTo know more about Trinity feel free to explore the command.`
+  );
+};
+
 export default (ctx) => {
   try {
     let userCount;
@@ -22,15 +39,9 @@ export default (ctx) => {
       getUser(user.id).then((existingUser) => {
         if (!existingUser) {
           postUser(userObj);
-          const { squad, platoon, company, battalion } = userObj;
-          ctx.reply(
-            `Welcome to the Trinity Army Camp🎪\n\nYou are now part of Battalion ${battalion}, Company ${company}, Platoon ${platoon}, Squad ${squad}.\n\nTo know more about Trinity feel free to explore the command.`
-          );
+          newUserReply(ctx, userObj);
         } else {
-          const { squad, platoon, company, battalion } = existingUser;
-          ctx.reply(
-            `Welcome to the Trinity Army Camp🎪\n\nYou are now part of Battalion ${battalion}, Company ${company}, Platoon ${platoon}, Squad ${squad}.\n\nTo know more about Trinity feel free to explore the command.`
-          );
+          newUserReply(ctx, existingUser);
         }
       });
       console.log("User: ", user);

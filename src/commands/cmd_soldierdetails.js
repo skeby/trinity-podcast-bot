@@ -7,17 +7,19 @@ export default (ctx) => {
     ctx.chat.type === "private" ? ctx.chat.username : ctx.from.username;
   const firstName =
     ctx.chat.type === "private" ? ctx.chat.first_name : ctx.from.first_name;
-
+  console.log("id: ", id);
   getUser(id).then((existingUser) => {
     if (existingUser) {
       user = existingUser;
       // Reply with details
       ctx.reply(
-        `${username ? `@${username}` : firstName}, You are in squad ${
-          user.squad
-        }, platoon ${user.platoon}, company ${user.company}, battalion ${
-          user.battalion
-        }`
+        `${username ? `@${username}` : firstName}, You are  NO ${
+          user.communityNumber % 10
+        } in Squad ${user.squad}, Platoon ${user.platoon}, Company ${
+          user.company
+        }, Battalion ${user.battalion}.\n\nYour soldier ID is S${user.squad}P${
+          user.platoon
+        }C${user.company}B${user.battalion}`
       );
     } else {
       ctx.reply(
