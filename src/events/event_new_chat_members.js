@@ -4,10 +4,8 @@ const newUserReply = (
   ctx,
   { communityNumber, squad, platoon, company, battalion }
 ) => {
-  const username =
-    ctx.chat.type === "private" ? ctx.chat.username : ctx.from.username;
-  const firstName =
-    ctx.chat.type === "private" ? ctx.chat.first_name : ctx.from.first_name;
+  const username = ctx.from.username;
+  const firstName = ctx.from.first_name;
   ctx.reply(
     `Welcome to the Trinity Army Camp 🎪, ${
       firstName ? `${firstName}` : `@${username}`
@@ -44,7 +42,6 @@ export default (ctx) => {
           newUserReply(ctx, existingUser);
         }
       });
-      console.log("User: ", user);
     });
   } catch (err) {
     console.error("An error occured when adding new user to community", err);
