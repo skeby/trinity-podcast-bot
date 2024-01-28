@@ -1,6 +1,7 @@
 import express from "express";
 import bot from "./src/bot.js";
 import cmd_start from "./src/commands/cmd_start.js";
+import cmd_ourvision from "./src/commands/cmd_ourvision.js";
 import cmd_soldierdetails from "./src/commands/cmd_soldierdetails.js";
 import { connectToDB } from "./src/database/db.js";
 import event_new_chat_members from "./src/events/event_new_chat_members.js";
@@ -19,6 +20,7 @@ server.get("/ping", (req, res) => {
 });
 
 bot.start(cmd_start);
+bot.command("ourvision", cmd_ourvision);
 bot.command("soldierdetails", cmd_soldierdetails);
 bot.on("new_chat_members", event_new_chat_members);
 // bot.on("left_chat_member", event_left_chat_member);
