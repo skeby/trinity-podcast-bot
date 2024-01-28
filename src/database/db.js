@@ -1,9 +1,5 @@
 import mongoose from "mongoose";
-import dotenv from "dotenv";
 import User from "../database/models/User.js";
-
-// Load content of .env file into process.env
-dotenv.config();
 
 const { connect, connection } = mongoose;
 const DB_BASE_URI =
