@@ -13,7 +13,7 @@ export default (ctx) => {
       user = existingUser;
       // Reply with details
       ctx.reply(
-        `${username ? `@${username}` : firstName}, You are  No. ${
+        `${firstName ? `${firstName}` : `@${username}`}, You are  No. ${
           user.communityNumber % 10
         } in Squad ${user.squad}, Platoon ${user.platoon}, Company ${
           user.company

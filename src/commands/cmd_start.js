@@ -5,7 +5,7 @@ const cmd_start = (ctx) => {
     ctx.chat.type === "private" ? ctx.chat.first_name : ctx.from.first_name;
   ctx.reply(
     `Hello ${
-      username ? `@${username}` : firstName
+      firstName ? `${firstName}` : `@${username}`
     }\nWelcome to the Trinity Army Camp, a community designed to help you become the original you.\n#BecomeTheOriginalYou\n\nSend /soldierdetails to get your Trinity Army ID`
   );
 };

@@ -10,7 +10,7 @@ const newUserReply = (
     ctx.chat.type === "private" ? ctx.chat.first_name : ctx.from.first_name;
   ctx.reply(
     `Welcome to the Trinity Army Camp 🎪, ${
-      username ? `@${username}` : firstName
+      firstName ? `${firstName}` : `@${username}`
     }\n\nYou are No. ${
       communityNumber % 10
     } in Squad ${squad}, Platoon ${platoon}, Company ${company}, Battalion ${battalion}. Your soldier ID is S${squad}P${platoon}C${company}B${battalion}.\n\nTo know more about Trinity feel free to explore the command.`
