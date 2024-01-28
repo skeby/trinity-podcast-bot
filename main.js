@@ -29,12 +29,14 @@ if (process.env.NODE_ENV === "production") {
       console.error("An error occured while starting the bot: ", err);
     });
 } else {
-  bot
-    .launch({ dropPendingUpdates: true })
-    .then(() => {
-      console.log("Bot started");
-    })
-    .catch((err) => {
-      console.error("An error occured while starting the bot: ", err);
-    });
+  bot.launch({ dropPendingUpdates: true }).catch((err) => {
+    console.error("An error occured while starting the bot: ", err);
+  });
+  bot.telegram
+    .getMe()
+    .then((res) =>
+      console.log(
+        `Bot started in development mode on https://t.me/${res.username}`
+      )
+    );
 }
