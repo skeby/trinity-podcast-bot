@@ -11,6 +11,10 @@ Create a `.env` file in the root directory:
 ```bash
 BOT_TOKEN=<YOUR_BOT_TOKEN>
 DB_BASE_URI=<YOUR_MONGODB_URI>
+NODE_ENV=<production/development>
+WEBHOOK_DOMAIN=<YOUR_WEBHOOK_DOMAIN>
+WEBHOOK_PORT=443
+EXPRESS_PORT=3000
 ```
 
 # Installation
