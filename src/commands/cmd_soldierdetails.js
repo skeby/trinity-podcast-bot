@@ -16,7 +16,7 @@ export default (ctx) => {
           user.company
         }, Battalion ${user.battalion}.\n\nYour soldier ID is S${user.squad}P${
           user.platoon
-        }C${user.company}B${user.battalion}.`
+        }C${user.company}B${user.battalion}-${user.communityNumber}.`
       );
     } else {
       ctx.reply(
