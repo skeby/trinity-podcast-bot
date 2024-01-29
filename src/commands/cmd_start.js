@@ -3,8 +3,8 @@ const cmd_start = (ctx) => {
   const firstName = ctx.from.first_name;
   ctx.reply(
     `Hello ${
-      firstName ? `${firstName}` : `@${username}.`
-    }\nWelcome to the Trinity Army Camp, a community designed to help you become the original you.\n#BecomeTheOriginalYou\n\nSend /soldierdetails to get your Trinity Army ID.`
+      firstName ? `${firstName}` : `@${username}`
+    }.\nWelcome to the Trinity Army Camp, a community designed to help you become the original you.\n#BecomeTheOriginalYou\n\nSend /soldierdetails to get your Trinity Army ID.`
   );
 };
 
