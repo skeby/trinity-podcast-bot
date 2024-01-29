@@ -5,3 +5,4 @@ const cmd_ourvision = (ctx) => {
 };
 
 export default cmd_ourvision;
+// TODO: Add full stop to all replies
