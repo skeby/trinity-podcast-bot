@@ -4,7 +4,7 @@ const getPodcastMarkup = (chatType) => {
     return Markup.inlineKeyboard([
       Markup.button.webApp(
         "View Podcast",
-        "https://trinity.onpodium.co/episodes/9-staying-true-to-purpose-avoiding-competition-comparison-ayomide-soretire"
+        "https://podcasters.spotify.com/pod/show/trinitypodcasting"
       ),
     ]);
   } else {
