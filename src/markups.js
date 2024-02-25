@@ -9,10 +9,7 @@ const getPodcastMarkup = (chatType) => {
     ]);
   } else {
     return Markup.inlineKeyboard([
-      Markup.button.url(
-        "View Podcast",
-        "https://podcasters.spotify.com/pod/show/trinitypodcasting"
-      ),
+      Markup.button.url("View Podcast", "https://t.me/trinitydevbot/podcast"),
     ]);
   }
 };
