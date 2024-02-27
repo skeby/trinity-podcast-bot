@@ -6,12 +6,11 @@ const newUserReply = (
 ) => {
   const username = ctx.from.username;
   const firstName = ctx.from.first_name;
+  const numberInSquad = communityNumber % 10 === 0 ? 10 : communityNumber % 10;
   ctx.reply(
     `Welcome to the Trinity Army Camp 🎪, ${
       firstName ? `${firstName}` : `@${username}.`
-    }\n\nYou are No. ${
-      communityNumber % 10
-    } in Squad ${squad}, Platoon ${platoon}, Company ${company}, Battalion ${battalion}. Your soldier ID is S${squad}P${platoon}C${company}B${battalion}-${communityNumber}.\n\nTo know more about Trinity feel free to explore the commands.`
+    }\n\nYou are No. ${numberInSquad} in Squad ${squad}, Platoon ${platoon}, Company ${company}, Battalion ${battalion}. Your soldier ID is S${squad}P${platoon}C${company}B${battalion}-${communityNumber}.\n\nTo know more about Trinity feel free to explore the commands.`
   );
 };
 
