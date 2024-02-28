@@ -1,5 +1,6 @@
 import mongoose from "mongoose";
 import User from "../database/models/User.js";
+import errorHandler from "../errorHandler.js";
 
 const { connect, connection } = mongoose;
 const DB_BASE_URI =
@@ -9,10 +10,14 @@ const DB_BASE_URI =
 
 const connectToDB = (databaseName) => {
   // Connect to the specified database
-  connect(DB_BASE_URI + "/" + databaseName);
-  connection.on("connected", () => {
-    console.log("Database connected succesfully");
-  });
+  try {
+    connect(DB_BASE_URI + "/" + databaseName);
+    connection.on("connected", () => {
+      console.log("Database connected succesfully");
+    });
+  } catch (err) {
+    errorHandler(err, "Database Connection");
+  }
 };
 
 const getUser = (userId) => {

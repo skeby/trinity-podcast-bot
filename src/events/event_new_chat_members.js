@@ -1,4 +1,5 @@
 import { getUser, getUserCount, postUser } from "../database/db.js";
+import errorHandler from "../errorHandler.js";
 
 const newUserReply = (
   ctx,
@@ -43,6 +44,6 @@ export default (ctx) => {
       });
     });
   } catch (err) {
-    console.error("An error occured when adding new user to community", err);
+    errorHandler(err, "Event new_chat_members");
   }
 };
