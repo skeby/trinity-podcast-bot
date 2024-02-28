@@ -22,7 +22,7 @@ export default (ctx) => {
       );
     } else {
       ctx.reply(
-        "You are not a soldier in Trinity Podcast.\nJoin the Trinity Podcast Group:\n\nhttps://t.me/trinitypodcast"
+        "You are not a soldier in Trinity Army.\nJoin the Trinity Army Camp:\n\nhttps://t.me/+6H5X2Ynjs2dmMTg8"
       );
     }
   });
