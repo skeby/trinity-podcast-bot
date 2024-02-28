@@ -4,7 +4,7 @@ import { getPodcastMarkup } from "../markups.js";
 const cmd_viewpodcast = (ctx) => {
   try {
     ctx.reply(
-      "Click the button below to view the Trinity Podcast.",
+      "Click the button below to listen to the Trinity Podcast.",
       getPodcastMarkup(ctx.chat.type)
     );
   } catch (err) {

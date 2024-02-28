@@ -7,7 +7,7 @@ const cmd_start = (ctx) => {
     ctx.reply(
       `Hello ${
         firstName ? `${firstName}` : `@${username}`
-      }.\nWelcome to the Trinity Army Camp, a community designed to help you become the original you.\n#BecomeTheOriginalYou\n\nSend /soldierdetails to view your Trinity Army ID. \nSend /viewpodcast to view the Trinity Podcast.`
+      }.\nWelcome to the Trinity Army Camp, a community designed to help you become the original you.\n#BecomeTheOriginalYou\n\nSend /soldierdetails to view your Trinity Army ID. \nSend /viewpodcast to listen to the Trinity Podcast.`
     );
   } catch (err) {
     errorHandler(err, "Command /start");
