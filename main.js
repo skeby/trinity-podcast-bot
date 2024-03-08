@@ -4,6 +4,7 @@ import cmd_start from "./src/commands/cmd_start.js";
 import cmd_ourvision from "./src/commands/cmd_ourvision.js";
 import cmd_soldierdetails from "./src/commands/cmd_soldierdetails.js";
 import cmd_viewpodcast from "./src/commands/cmd_viewpodcast.js";
+import cmd_usercount from "./src/commands/cmd_usercount";
 import { connectToDB } from "./src/database/db.js";
 import event_new_chat_members from "./src/events/event_new_chat_members.js";
 
@@ -13,6 +14,7 @@ bot.start(cmd_start);
 bot.command("ourvision", cmd_ourvision);
 bot.command("soldierdetails", cmd_soldierdetails);
 bot.command("viewpodcast", cmd_viewpodcast);
+bot.command("usercount", cmd_usercount);
 bot.on("new_chat_members", event_new_chat_members);
 
 if (process.env.NODE_ENV === "production") {
