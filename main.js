@@ -15,7 +15,7 @@ bot.command("ourvision", cmd_ourvision);
 bot.command("soldierdetails", cmd_soldierdetails);
 bot.command("viewpodcast", cmd_viewpodcast);
 bot.command("usercount", cmd_usercount);
-bot.on("new_chat_members", event_new_chat_members);
+bot.on(message("new_chat_members"), event_new_chat_members);
 
 if (process.env.NODE_ENV === "production") {
   bot
@@ -39,7 +39,7 @@ if (process.env.NODE_ENV === "production") {
     .getMe()
     .then((res) =>
       console.log(
-        `Bot started in development mode on https://t.me/${res.username}`
+        `Bot started in ${process.env.NODE_ENV} mode on https://t.me/${res.username}`
       )
     );
 }
