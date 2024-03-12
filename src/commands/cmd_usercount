@@ -3,7 +3,7 @@ import errorHandler from "../errorHandler.js";
 
 const cmd_usercount = (ctx) => {
   try {
-    if (ctx.chat.id === 2080434793) {
+    if (ctx.chat.id === 2080434793 && ctx.chat.type === "private") {
       getUserCount().then((count) => {
         ctx.reply(`Number of Users: ${count}`);
       });
