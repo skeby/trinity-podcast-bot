@@ -1,3 +1,4 @@
+import express from "express";
 import { message } from "telegraf/filters";
 import bot from "./src/bot.js";
 import cmd_start from "./src/commands/cmd_start.js";
@@ -7,6 +8,8 @@ import cmd_viewpodcast from "./src/commands/cmd_viewpodcast.js";
 import cmd_usercount from "./src/commands/cmd_usercount";
 import { connectToDB } from "./src/database/db.js";
 import event_new_chat_members from "./src/events/event_new_chat_members.js";
+
+const server = express();
 
 connectToDB("trinity-podcast-bot");
 
@@ -18,19 +21,33 @@ bot.command("usercount", cmd_usercount);
 bot.on(message("new_chat_members"), event_new_chat_members);
 
 if (process.env.NODE_ENV === "production") {
+  // bot
+  //   .launch({
+  //     webhook: {
+  //       domain: process.env.WEBHOOK_DOMAIN,
+  //       port: process.env.WEBHOOK_PORT,
+  //     },
+  //   })
+  //   .then(() => {
+  //     console.log("Webhook bot listening on port " + process.env.WEBHOOK_PORT);
+  //   })
+  //   .catch((err) => {
+  //     console.error("An error occured while starting the bot: ", err);
+  //   });
   bot
-    .launch({
-      webhook: {
-        domain: process.env.WEBHOOK_DOMAIN,
-        port: process.env.WEBHOOK_PORT,
-      },
+    .createWebhook({ domain: WEBHOOK_DOMAIN })
+    .then((middleware) => {
+      server.use(middleware);
+      server.get("/", (_, res) => {
+        res.send("Hello World!");
+      });
+      server.listen(WEBHOOK_PORT, () => {
+        console.log(`Server is listening on port ${WEBHOOK_PORT}`);
+      });
     })
-    .then(() => {
-      console.log("Webhook bot listening on port " + process.env.WEBHOOK_PORT);
-    })
-    .catch((err) => {
-      console.error("An error occured while starting the bot: ", err);
-    });
+    .catch((err) =>
+      console.error("An error occured while setting up the webhook:", err)
+    );
 } else {
   bot.launch({ dropPendingUpdates: true }).catch((err) => {
     console.error("An error occured while starting the bot: ", err);
