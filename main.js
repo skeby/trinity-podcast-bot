@@ -35,14 +35,14 @@ if (process.env.NODE_ENV === "production") {
   //     console.error("An error occured while starting the bot: ", err);
   //   });
   bot
-    .createWebhook({ domain: WEBHOOK_DOMAIN })
+    .createWebhook({ domain: process.env.WEBHOOK_DOMAIN })
     .then((middleware) => {
       server.use(middleware);
       server.get("/", (_, res) => {
         res.send("Hello World!");
       });
-      server.listen(WEBHOOK_PORT, () => {
-        console.log(`Server is listening on port ${WEBHOOK_PORT}`);
+      server.listen(process.env.WEBHOOK_PORT, () => {
+        console.log(`Server is listening on port ${process.env.WEBHOOK_PORT}`);
       });
     })
     .catch((err) =>
